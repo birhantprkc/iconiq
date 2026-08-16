@@ -32,6 +32,7 @@ export function CarbonAds({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: reload Carbon on App Router navigations (SPA)
   useEffect(() => {
     const container = containerRef.current;
     if (!container) {
