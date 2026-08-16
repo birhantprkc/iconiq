@@ -479,9 +479,8 @@ html[data-motion-tier="none"] ::view-transition-new(root) {
   animation: none !important;
 }
 
-/* Carbon Cover — reserved slot. Do not hide ad elements. */
+/* Carbon — leave sizing to Carbon; parent centers the slot. */
 .carbon-ads-slot {
-  width: 100%;
   max-width: 100%;
   overflow: visible;
 }
