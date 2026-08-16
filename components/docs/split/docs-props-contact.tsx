@@ -1,5 +1,6 @@
 import { Github } from "lucide-react";
 
+import { CarbonAds } from "@/components/carbon-ads";
 import { LINK } from "@/constants";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +33,10 @@ export function DocsPropsContact({ className }: { className?: string }) {
         </a>
         .
       </p>
+
+      <aside aria-label="Advertisement" className="mt-2">
+        <CarbonAds />
+      </aside>
     </div>
   );
 }

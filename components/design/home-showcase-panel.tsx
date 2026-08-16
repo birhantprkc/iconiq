@@ -69,8 +69,8 @@ export function HomeShowcasePanel({
           {title}
         </Button>
       </div>
-      <div className="absolute inset-0 z-2 flex items-center justify-center p-4 pt-11 sm:p-4 sm:pt-11 md:p-5 md:pt-12">
-        <div className="flex size-full max-h-full min-w-0 items-center justify-center">
+      <div className="absolute inset-0 z-2 flex items-center justify-center p-4 md:p-5">
+        <div className="flex h-full w-full min-w-0 max-h-full items-center justify-center">
           {children}
         </div>
       </div>

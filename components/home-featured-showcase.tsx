@@ -8,7 +8,8 @@ import {
   HomeShowcasePanel,
   homeShowcaseColSpan,
 } from "@/components/design/home-showcase-panel";
-import { FaviconBadgeLivePreview } from "@/components/favicon-badge-live-preview";
+import { GridCornerDots } from "@/components/design/line-grid";
+import { CarbonAds } from "@/components/carbon-ads";
 import {
   HomeShowcaseGrid,
   HomeShowcaseRow,
@@ -288,14 +289,6 @@ function HomeReasoningStepsShowcase() {
   );
 }
 
-function HomeFaviconBadgeShowcase() {
-  const [website, setWebsite] = useState("vercel.com");
-
-  return (
-    <FaviconBadgeLivePreview onWebsiteChange={setWebsite} website={website} />
-  );
-}
-
 const streamingTextCopy =
   "Great interfaces feel alive because every word earns its place — arriving softly, settling quietly, and leaving the reader with nothing but the message.";
 
@@ -373,8 +366,8 @@ export function HomeFeaturedShowcase() {
             href="/texts/dia-text"
             title="Dia Text"
           >
-            <div className="w-full text-center">
-              <p className="max-w-4xl font-light text-4xl text-foreground tracking-tight">
+            <div className="flex w-full items-center justify-center px-2 text-center">
+              <p className="max-w-4xl text-balance font-light text-4xl text-foreground tracking-tight">
                 Make interfaces feel{" "}
                 <DiaText
                   repeat
@@ -385,16 +378,18 @@ export function HomeFeaturedShowcase() {
             </div>
           </HomeShowcasePanel>
 
-          <HomeShowcasePanel
+          <aside
+            aria-label="Advertisement"
             className={cn(
               homeShowcaseColSpan[5],
-              "min-h-[240px] md:min-h-[280px]"
+              "relative min-h-[240px] overflow-visible border-border border-r border-b bg-background md:min-h-[280px]"
             )}
-            href="/display-and-content/favicon-badge"
-            title="Favicon Badge"
           >
-            <HomeFaviconBadgeShowcase />
-          </HomeShowcasePanel>
+            <GridCornerDots className="z-3 md:hidden" columns={1} rows={1} />
+            <div className="absolute inset-0 z-2 flex items-center justify-center p-4">
+              <CarbonAds />
+            </div>
+          </aside>
         </HomeShowcaseRow>
 
         <HomeShowcaseRow columnWeights={[7, 5]}>
