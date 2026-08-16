@@ -12688,8 +12688,69 @@ const contributionGraphApiDetails: DetailItem[] = [
   registryItem("contribution-graph.json", ["date-fns"]),
 ];
 
+const bentoBuilderApiDetails: DetailItem[] = [
+  {
+    id: "bento-builder",
+    title: "BentoBuilder",
+    summary:
+      "A self-contained layout canvas. Drag a tile to move it, tap it to rename it, drag its bottom-right corner to resize, use Add to place a new tile, and take the live Export layout snippet — a typed, props-driven grid component ready for you to fill in descriptions, images, and links in your own project.",
+    fields: [
+      field({
+        name: "cols",
+        type: "number",
+        defaultValue: "6",
+        description:
+          "Number of grid columns. Changing it re-lays the default tiles out to fit the new column count.",
+      }),
+      field({
+        name: "rowHeight",
+        type: "number",
+        defaultValue: "110",
+        description: "Height of each grid row, in pixels.",
+      }),
+      field({
+        name: "gap",
+        type: "number",
+        defaultValue: "12",
+        description: "Gap between tiles, in pixels.",
+      }),
+      field({
+        name: "cornerRadius",
+        type: "number",
+        defaultValue: "24",
+        description:
+          "Corner radius of every tile, in pixels — adjustable from the preview's settings panel.",
+      }),
+      field({
+        name: "className",
+        type: "string",
+        description:
+          "Extra classes for the root canvas, merged over the default card surface.",
+      }),
+      field({
+        name: "onLayoutChange",
+        type: "(code: string) => void",
+        description:
+          "Called with the generated layout snippet every time a tile moves, resizes, is added, or removed — useful for mirroring the canvas's current code outside the component.",
+      }),
+    ],
+    notes: [
+      "Drag anywhere on a tile to move it; drag the handle that appears in its bottom-right corner on hover to resize.",
+      "Dropping a tile on an already-occupied spot swaps the two tiles instead of letting them overlap. A wide tile can also swap with a group that exactly fills its footprint (e.g. 3×1 over 2×1+1×1).",
+      "Tap a tile to select it — a rename field replaces its label, and its remove and resize controls stay visible without needing hover. This is what makes the canvas fully usable on touch devices, not just desktop.",
+      "Use the × that appears in a tile's top-right corner to remove it. Add places a new tile in the first open row and selects it immediately so it's ready to rename.",
+      "Export layout updates live with a typed BentoTile array and a Bento component that takes tiles/cols/rowHeight/gap/cornerRadius as props — edit the descriptions and images in your own project, or pass your own tiles in from anywhere in your app.",
+      "Set href on any tile in the exported array to make it a real link: that tile renders as an <a> instead of a <div>, so it's keyboard-focusable and works with Cmd/Ctrl-click and screen readers out of the box.",
+      "The exported Bento component is mobile-responsive out of the box. Grid placement is set through CSS custom properties rather than inline grid-column/grid-row, so a plain Tailwind max-sm: utility (with the trailing ! important modifier) can override it below 640px — no injected <style> tag or !important CSS required.",
+      "Each exported tile has a minimal hover lift — a small translate and scale on transform, gated behind motion-safe so it's skipped for visitors with reduced motion enabled.",
+    ],
+  },
+  registryItem("bento-builder.json", ["motion", "lucide-react"]),
+];
+
 export {
   aiInputApiDetails,
+  bentoBuilderApiDetails,
   contributionGraphApiDetails,
   bannerApiDetails,
   thinkingIndicatorApiDetails,

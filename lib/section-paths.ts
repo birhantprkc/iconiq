@@ -1,5 +1,6 @@
 /** URL path prefix for each docs sidebar section. */
 export const SECTION_PATH_PREFIX = {
+  Builder: "/builder",
   "Buttons & Actions": "/buttons-and-actions",
   "Inputs & Forms": "/inputs-and-forms",
   Blocks: "/blocks",
@@ -16,6 +17,7 @@ export const SECTION_PATH_PREFIX = {
 export type SectionLabel = keyof typeof SECTION_PATH_PREFIX;
 
 export const DOCS_SECTION_SEGMENTS = [
+  "builder",
   "buttons-and-actions",
   "inputs-and-forms",
   "blocks",

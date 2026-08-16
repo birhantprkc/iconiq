@@ -125,6 +125,12 @@ const REGISTRY_UI_META: Record<
       "Searchable single-select input with inline filtering, arrow-key navigation, animated dropdown motion, and an optional clear action.",
     dependencies: ["@base-ui/react", "motion", "lucide-react"],
   },
+  "bento-builder": {
+    title: "Bento Builder",
+    description:
+      "Interactive bento-grid layout tool — drag tiles to reposition, tap to rename, drag a corner to resize, add tiles, then export the generated grid layout code to drop straight into your own project.",
+    dependencies: ["motion", "lucide-react"],
+  },
   "contribution-graph": {
     title: "Contribution Graph",
     description:

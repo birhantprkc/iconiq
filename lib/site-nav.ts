@@ -22,6 +22,10 @@ export const HIDDEN_NAV_HREFS: readonly string[] = [
 
 export const SITE_SECTIONS = [
   {
+    label: "Builder",
+    children: [{ label: "Bento Builder", href: "/builder/bento-builder" }],
+  },
+  {
     label: "Blocks",
     children: [
       { label: "AI Input", href: "/blocks/ai-input" },

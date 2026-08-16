@@ -119,6 +119,7 @@ function DocsBreadcrumbs({
       "components",
       "foundation",
       "getting started",
+      "builder",
       "blocks",
       "buttons & actions",
       "inputs & forms",
@@ -694,6 +695,7 @@ function ComponentDocsPage({
   usageCode,
   usageDescription,
   usageContent,
+  usageTitle = "Usage",
   details,
   preInstallationSections = [],
   extraSections = [],
@@ -705,6 +707,10 @@ function ComponentDocsPage({
   examples = [],
   fullWidthPreview = false,
   hideDefaultPreviewVariant = false,
+  hideInstallation = false,
+  hideFileStructure = false,
+  hidePreviewReload = false,
+  hidePreviewSource = false,
   installDescription,
   installPath,
   releasedAt,
@@ -724,6 +730,8 @@ function ComponentDocsPage({
   v0PageCode?: string;
   usageDescription?: ReactNode;
   usageContent?: ReactNode;
+  /** Heading for the usage/code section. Defaults to "Usage". */
+  usageTitle?: string;
   details: DetailItem[];
   preInstallationSections?: ComponentDocsExtraSection[];
   extraSections?: ComponentDocsExtraSection[];
@@ -742,6 +750,14 @@ function ComponentDocsPage({
   examples?: VariantItem[];
   fullWidthPreview?: boolean;
   hideDefaultPreviewVariant?: boolean;
+  /** Hide the CLI install block (e.g. builder tools that are used in-docs only). */
+  hideInstallation?: boolean;
+  /** Hide the file-structure tree (pair with hideInstallation for in-docs tools). */
+  hideFileStructure?: boolean;
+  /** Hide the preview toolbar reload control. */
+  hidePreviewReload?: boolean;
+  /** Hide the preview toolbar view-source control. */
+  hidePreviewSource?: boolean;
   installPath?: string;
   releasedAt?: string;
   showPageActions?: boolean;
@@ -857,28 +873,32 @@ function ComponentDocsPage({
                   </DocsSection>
                 ))}
 
-                <DocsSection id="installation" title="Installation">
-                  {installDescription ? (
-                    <div className="text-[14px] text-zinc-600 leading-6 dark:text-zinc-400">
-                      {installDescription}
-                    </div>
-                  ) : null}
-                  <InstallCommand
-                    component={componentName}
-                    key={componentName}
-                  />
-                  {installationContent}
-                </DocsSection>
+                {hideInstallation ? null : (
+                  <DocsSection id="installation" title="Installation">
+                    {installDescription ? (
+                      <div className="text-[14px] text-zinc-600 leading-6 dark:text-zinc-400">
+                        {installDescription}
+                      </div>
+                    ) : null}
+                    <InstallCommand
+                      component={componentName}
+                      key={componentName}
+                    />
+                    {installationContent}
+                  </DocsSection>
+                )}
 
-                <DocsSection id="file-structure" title="File Structure">
-                  <DocsFileStructure
-                    componentName={componentName}
-                    installPath={installPath}
-                    key={componentName}
-                  />
-                </DocsSection>
+                {hideFileStructure ? null : (
+                  <DocsSection id="file-structure" title="File Structure">
+                    <DocsFileStructure
+                      componentName={componentName}
+                      installPath={installPath}
+                      key={componentName}
+                    />
+                  </DocsSection>
+                )}
 
-                <DocsSection id="usage" title="Usage">
+                <DocsSection id="usage" title={usageTitle}>
                   <SplitUsageCode
                     hideDefaultTab={hideDefaultPreviewVariant}
                     hideVariantTabs={examples.length > 0}
@@ -939,6 +959,8 @@ function ComponentDocsPage({
               <DocsPreviewWrapper
                 fullWidthPreview={fullWidthPreview}
                 hideDefaultVariant={hideDefaultPreviewVariant}
+                hideReload={hidePreviewReload}
+                hideSourceCode={hidePreviewSource}
                 key={componentName}
                 personalizeContent={previewPersonalize}
                 personalizeTitle={previewPersonalizeTitle}

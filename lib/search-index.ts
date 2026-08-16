@@ -72,6 +72,8 @@ const componentSummaries: Record<string, string> = {
     "Input docs in the Inputs & Forms section for a text field with a spring-animated caret.",
   "/inputs-and-forms/input-otp":
     "Input OTP docs in the Inputs & Forms section with Base UI OTP Field slots, spring focus motion, character entrance, and a blinking caret on the active cell.",
+  "/builder/bento-builder":
+    "Bento Builder docs in the Builder section — an interactive bento-grid tool where you drag tiles to reposition, tap to rename, drag a corner to resize, add tiles, tune row height and corner radius, then export the generated layout code straight into your own project.",
   "/blocks/ai-input":
     "AI input docs in the Blocks section with a chat-style composer, agent and model selector chips, sent-message bubbles, and an Apple Intelligence-style gradient wave that sweeps the surface after a message is sent.",
   "/blocks/banner":
@@ -169,6 +171,16 @@ const componentSummaries: Record<string, string> = {
 };
 
 const extraComponentKeywordsBySlug: Record<string, string[]> = {
+  "bento-builder": [
+    "bento builder",
+    "bento grid",
+    "grid builder",
+    "layout builder",
+    "drag and drop grid",
+    "resize tiles",
+    "custom layout",
+    "grid layout generator",
+  ],
   card: ["panel", "surface", "container"],
   marker: [
     "text annotation",

@@ -34,6 +34,8 @@ interface DocsPreviewWrapperProps {
   personalizeTitle?: string;
   sourceCodeFilename?: string;
   sourceCodeKey?: string;
+  hideReload?: boolean;
+  hideSourceCode?: boolean;
   variants?: VariantItem[];
   hideDefaultVariant?: boolean;
   previewClassName?: string;
@@ -74,6 +76,8 @@ export function DocsPreviewWrapper({
   personalizeTitle = "Settings",
   sourceCodeFilename,
   sourceCodeKey,
+  hideReload = false,
+  hideSourceCode = false,
   variants = [],
   hideDefaultVariant = false,
   previewClassName,
@@ -105,7 +109,7 @@ export function DocsPreviewWrapper({
 
   const previewRef = React.useRef<HTMLDivElement>(null);
   const splitPreviewRectRef = React.useRef<PreviewRect | null>(null);
-  const hasSourceCode = Boolean(sourceCodeKey);
+  const hasSourceCode = Boolean(sourceCodeKey) && !hideSourceCode;
 
   const cacheSplitPreviewRect = React.useCallback(() => {
     const layout = previewRef.current?.closest("[data-docs-layout]");
@@ -233,6 +237,7 @@ export function DocsPreviewWrapper({
     >
       <DocsPreviewToolbar
         hasSourceCode={hasSourceCode}
+        hideReload={hideReload}
         isExpanded={isExpanded}
         onReload={() => setKey((current) => current + 1)}
         onSourceToggle={handleSourceToggle}

@@ -4,12 +4,12 @@ import { Camera, Paperclip, Plug } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { InlinePreviewSelect } from "@/app/(site)/components/_components/inline-preview-select";
+import { CarbonAds } from "@/components/carbon-ads";
 import {
   HomeShowcasePanel,
   homeShowcaseColSpan,
 } from "@/components/design/home-showcase-panel";
 import { GridCornerDots } from "@/components/design/line-grid";
-import { CarbonAds } from "@/components/carbon-ads";
 import {
   HomeShowcaseGrid,
   HomeShowcaseRow,

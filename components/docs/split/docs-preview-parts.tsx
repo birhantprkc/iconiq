@@ -68,6 +68,7 @@ const previewToolbarIconClass =
 export function DocsPreviewToolbar({
   githubHref = LINK.GITHUB,
   hasSourceCode,
+  hideReload = false,
   isExpanded,
   onReload,
   onSourceToggle,
@@ -77,6 +78,7 @@ export function DocsPreviewToolbar({
 }: {
   githubHref?: string;
   hasSourceCode: boolean;
+  hideReload?: boolean;
   isExpanded: boolean;
   onReload: () => void;
   onSourceToggle: () => void;
@@ -119,16 +121,18 @@ export function DocsPreviewToolbar({
         </PreviewToolbarCell>
       ) : null}
 
-      <PreviewToolbarCell>
-        <button
-          aria-label="Reload preview"
-          className={previewToolbarIconClass}
-          onClick={onReload}
-          type="button"
-        >
-          <RotateCcw className="size-4" />
-        </button>
-      </PreviewToolbarCell>
+      {hideReload ? null : (
+        <PreviewToolbarCell>
+          <button
+            aria-label="Reload preview"
+            className={previewToolbarIconClass}
+            onClick={onReload}
+            type="button"
+          >
+            <RotateCcw className="size-4" />
+          </button>
+        </PreviewToolbarCell>
+      )}
 
       <PreviewToolbarCell active={isExpanded}>
         <button
